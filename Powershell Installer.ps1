@@ -1,5 +1,5 @@
-﻿cd $userprofile
-cd Documents
+﻿Set-Location $userprofile
+Set-Location Documents
 
 Write-Host 
 "
@@ -9,8 +9,6 @@ Write-Host
  ___) | | | | (_) \ V  V /| |_| | |_| | \__ \
 |____/|_| |_|\___/ \_/\_/  \___/ \__|_|_|___/
 
-
-PowerShell Launcher
 "
 
 Write-Host "Firt time running this? Type " -NoNewline
@@ -23,13 +21,17 @@ if ($ingate -eq "init")
 {
     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/SnowUtils/SnowUtils/main/uninstall.ps1" -OutFile "./uninstall.ps1"
     mkdir sutils
+    Write-Host " "
     Write-Host "sutils initialised! Run this script agan and type install!"
+    Set-Location $userprofile
 }
 
 if ($ingate -eq "install") 
 {
+    Invoke-WebRequest -Uri ""
+
     Write-Host "Downloading SNOWUtils in folder sutils..."
-    cd sutils
+    Set-Location sutils
 
     # MathUtils
     Start-Sleep -Seconds 3
@@ -39,7 +41,7 @@ if ($ingate -eq "install")
 
 
 
-    cd ..
+    Set-Location ..
 }
 
 if ($ingate -eq "uninstall") 
@@ -47,4 +49,11 @@ if ($ingate -eq "uninstall")
     ./uninstall.ps1
     Remove-Item -Path ".\uninstall.ps1"
     Write-Host "Utils removed, when no error showed up in the console!"
+}
+
+if ($ingate -eq "launch")
+{
+    Set-Location $userprofile
+    Set-Location ./Documents/sutils
+    ./launch.ps1
 }

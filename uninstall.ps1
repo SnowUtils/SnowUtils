@@ -1,1 +1,1 @@
-rmdir sutils
+Remove-Item sutils
