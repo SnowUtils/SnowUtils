@@ -28,7 +28,7 @@ if ($ingate -eq "init")
 
 if ($ingate -eq "install") 
 {
-    Invoke-WebRequest -Uri ""
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/SnowUtils/SnowUtils/main/launch.ps1" -OutFile "./launch.ps1"
 
     Write-Host "Downloading SNOWUtils in folder sutils..."
     Set-Location sutils
